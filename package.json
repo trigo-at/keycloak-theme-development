@@ -1,0 +1,25 @@
+{
+  "name": "@trigo/keycloak-theme-development",
+  "version": "1.0.0",
+  "description": "An example development environment setup to build Keycloak themes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trigo-at/keycloak-theme-development.git"
+  },
+  "keywords": [
+    "trigo",
+    "keycloak",
+    "development",
+    "themes"
+  ],
+  "author": "David Wippel <david@trigodev.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trigo-at/keycloak-theme-development/issues"
+  },
+  "homepage": "https://github.com/trigo-at/keycloak-theme-development#readme"
+}
