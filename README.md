@@ -20,3 +20,15 @@ They are often the only reliable source on how things are implemented.
 `./scripts/exportThemes.sh`
 
 Themes are extracted to `./themes/keycloak-provided-themes`.
+
+## Build the Tailwind Example
+
+During development run
+
+`npm run build:tailwind-example:dev`
+
+Before using it in production run
+
+`npm run build:tailwind-example`
+
+(this will use all the optimization features of Tailwind)
