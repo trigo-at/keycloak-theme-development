@@ -17,6 +17,7 @@ services:
       image: jboss/keycloak:15.1.0
       volumes:
        - ./disable-theme-cache.cli:/opt/jboss/startup-scripts/disable-theme-cache.cli
+       - ./themes/tailwind-example/:/opt/jboss/keycloak/themes/tailwind-example/
       environment:
         DB_VENDOR: POSTGRES
         DB_ADDR: postgres

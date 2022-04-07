@@ -2,9 +2,11 @@
   "name": "@trigo/keycloak-theme-development",
   "version": "1.0.0",
   "description": "An example development environment setup to build Keycloak themes",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:tailwind-example:dev": "tailwindcss -i ./styles/styles.css -o ./themes/tailwind-example/resources/css/styles.css --watch",
+    "build:tailwind-example": "NODE_ENV=production tailwindcss -i ./styles/styles.css -o ./themes/tailwind-example/resources/css/styles.css --minify",
+    "prettify": "prettier --write '**/*.{js,jsx}'",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,17 @@
   "bugs": {
     "url": "https://github.com/trigo-at/keycloak-theme-development/issues"
   },
-  "homepage": "https://github.com/trigo-at/keycloak-theme-development#readme"
+  "homepage": "https://github.com/trigo-at/keycloak-theme-development#readme",
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "prettier": "^2.6.2",
+    "tailwindcss": "^3.0.23"
+  }
 }
