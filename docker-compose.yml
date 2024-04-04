@@ -14,23 +14,24 @@ services:
         POSTGRES_USER: keycloak
         POSTGRES_PASSWORD: password
   keycloak:
-      image: jboss/keycloak:15.1.0
+      image: quay.io/keycloak/keycloak:${KC_VERSION}
+      command: ["start-dev", "--import-realm"]
+      restart: unless-stopped
       volumes:
        - ./disable-theme-cache.cli:/opt/jboss/startup-scripts/disable-theme-cache.cli
        - ./themes/tailwind-example/:/opt/jboss/keycloak/themes/tailwind-example/
       environment:
-        DB_VENDOR: POSTGRES
-        DB_ADDR: postgres
-        DB_DATABASE: keycloak
-        DB_USER: keycloak
-        DB_SCHEMA: public
-        DB_PASSWORD: password
-        KEYCLOAK_USER: admin
-        KEYCLOAK_PASSWORD: admin
-        KEYCLOAK_LOGLEVEL: INFO
-        ROOT_LOGLEVEL: INFO
+        KC_DB: postgres
+        KC_DB_USERNAME: keycloak
+        KC_DB_PASSWORD: password
+        KC_DB_URL: "jdbc:postgresql://postgres:5432/keycloak"
+        KC_METRICS_ENABLED: true
+        KC_LOG_LEVEL: ${KC_LOG_LEVEL}
+        KC_REALM_NAME: ${KC_REALM_NAME}
+        KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+        KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
       ports:
         - 8443:8443
-        - 8080:8080
+        - ${KC_PORT}:8080
       depends_on:
         - postgres
