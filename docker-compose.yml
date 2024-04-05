@@ -19,7 +19,7 @@ services:
       restart: unless-stopped
       volumes:
        - ./disable-theme-cache.cli:/opt/jboss/startup-scripts/disable-theme-cache.cli
-       - ./themes/tailwind-example/:/opt/jboss/keycloak/themes/tailwind-example/
+       - ./themes/tailwind-example/:/opt/keycloak/themes/tailwind-example/
       environment:
         KC_DB: postgres
         KC_DB_USERNAME: keycloak

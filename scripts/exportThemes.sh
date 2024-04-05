@@ -7,4 +7,4 @@ echo ${DIR}
 rm -rf ${DIR}/../themes/keycloak-provided-themes
 mkdir -p ${DIR}/../themes/
 
-docker cp $jar $(docker ps | grep jboss/keycloak:15.1.0 | cut -d' ' -f1):/opt/jboss/keycloak/themes ${DIR}/../themes/keycloak-provided-themes
+docker cp $jar $(docker ps | grep jboss/keycloak:${KC_VERSION} | cut -d' ' -f1):/opt/keycloak/themes ${DIR}/../themes/keycloak-provided-themes
