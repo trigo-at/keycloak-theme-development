@@ -5,14 +5,14 @@
 		<div>
 			<#if realm.password && social.providers??>
 				<div>
-					<p class="text-paragraph text-paragraph tracking-paragraph text-trigo-blue">
+					<p class="text-paragraph text-paragraph tracking-paragraph text-grey">
 						${msg("socialLoginDescription")}
 					</p>
 
 					<div class="mt-1 grid grid-cols-3 gap-3">
 						<#list social.providers as p>
 							<div>
-								<a type="button" href="${p.loginUrl}" id="social-${p.alias}" class="w-full inline-flex justify-center py-2 px-4 border border-trigo-blue rounded-md shadow-sm bg-white text-sm font-medium text-trigo-blue hover:bg-trigo-blue hover:text-white">
+								<a type="button" href="${p.loginUrl}" id="social-${p.alias}" class="w-full inline-flex justify-center py-2 px-4 border border-grey rounded-md shadow-sm bg-white text-sm font-medium text-grey hover:bg-grey hover:text-white">
 									<span class="sr-only">${msg("socialLoginDescription")} ${p.displayName!}</span>
 									<#if p.providerId = "github">
 										<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -28,10 +28,10 @@
 
 					<div class="mt-10 relative">
 						<div class="absolute inset-0 flex items-center" aria-hidden="true">
-						<div class="w-full border-t border-trigo-blue"></div>
+						<div class="w-full border-t border-grey"></div>
 						</div>
 						<div class="relative flex justify-center text-sm">
-						<span class="px-2 bg-white text-small tracking-paragraph text-trigo-blue">
+						<span class="px-2 bg-white text-small tracking-paragraph text-grey">
 							${msg("socialLoginAlternative")}
 
 						</span>
@@ -40,53 +40,53 @@
 				</div>
 			<#else>
 				<div>
-					<p class="text-paragraph text-paragraph tracking-paragraph text-trigo-blue">
-						${kcSanitize(msg("loginDescriptionHtml",(realm.displayNameHtml!'')))?no_esc}
+					<p class="text-paragraph text-paragraph tracking-paragraph text-grey">
+						${kcSanitize(msg("Your Demo Login",(realm.displayNameHtml!'')))?no_esc}
 					</p>
 				</div>
 			</#if>
 			<div class="mt-10">
 				<form class="space-y-6" id="kc-form-login" onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
 					<div>
-						<label for="username" class="block text-paragraph tracking-paragraph text-trigo-blue text-trigo-blue">
+						<label for="username" class="block text-paragraph tracking-paragraph text-grey text-grey">
 							${msg("usernameOrEmail")}
 						</label>
 						<div class="mt-1 relative">
-							<input tabindex="1" id="username" name="username" value="${(username!'')}" type="text" autofocus autocomplete="off" required class="appearance-none block w-full px-3 py-2 focus:outline-none text-paragraph tracking-paragraph border <#if messagesPerField.existsError('username','password')>border-trigo-tangerine placeholder-trigo-tangerine focus:ring-trigo-tangerine focus:border-trigo-tangerine<#else>border-gray-300 placeholder-gray-400 focus:ring-trigo-blue focus:border-trigo-blue</#if>" aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>">
+							<input tabindex="1" id="username" name="username" value="${(username!'')}" type="text" autofocus autocomplete="off" required class="appearance-none block w-full px-3 py-2 focus:outline-none text-paragraph tracking-paragraph border <#if messagesPerField.existsError('username','password')>border-orange placeholder-orange focus:ring-orange focus:border-orange<#else>border-gray-300 placeholder-gray-400 focus:ring-grey focus:border-grey</#if>" aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>">
 							<#if messagesPerField.existsError('username','password')>
 								<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-									<svg class="h-5 w-5 text-trigo-tangerine" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+									<svg class="h-5 w-5 text-orange" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 										<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
 									</svg>
 								</div>
 							</#if>
 						</div>
 						<#if messagesPerField.existsError('username','password')>
-							<p class="mt-2 text-paragraph tracking-paragraph text-trigo-tangerine" id="email-error" aria-live="polite">${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}</p>
+							<p class="mt-2 text-paragraph tracking-paragraph text-orange" id="email-error" aria-live="polite">${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}</p>
 						</#if>
 					</div>
 
 					<div class="space-y-1">
-					<label for="password" class="block text-paragraph tracking-paragraph text-trigo-blue text-trigo-blue">
+					<label for="password" class="block text-paragraph tracking-paragraph text-grey text-grey">
 						${msg("password")}
 					</label>
 					<div class="mt-1">
-						<input tabindex="2" id="password" name="password" type="password" aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" autocomplete="current-password" class="appearance-none block w-full px-3 py-2 border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-trigo-blue focus:border-trigo-blue text-paragraph tracking-paragraph">
+						<input tabindex="2" id="password" name="password" type="password" aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" autocomplete="current-password" class="appearance-none block w-full px-3 py-2 border border-gray-300 placeholder-gray-400 focus:outline-none focus:ring-grey focus:border-grey text-paragraph tracking-paragraph">
 					</div>
 					</div>
 					<#if realm.rememberMe || realm.resetPasswordAllowed>
 						<div class="flex items-center justify-between">
 							<#if realm.rememberMe>
 								<div class="flex items-center">
-									<input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox" class="h-4 w-4 text-trigo-blue focus:ring-trigo-blue border-trigo-blue rounded">
-									<label for="rememberMe" class="ml-2 block text-small tracking-paragraph text-trigo-blue">
+									<input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox" class="h-4 w-4 text-grey focus:ring-grey border-grey rounded">
+									<label for="rememberMe" class="ml-2 block text-small tracking-paragraph text-grey">
 										${msg("rememberMe")}
 									</label>
 								</div>
 							</#if>
 							<#if realm.resetPasswordAllowed>
 							<div>
-								<a href="${url.loginResetCredentialsUrl}" tabindex="5" class="text-small tracking-paragraph text-trigo-blue">
+								<a href="${url.loginResetCredentialsUrl}" tabindex="5" class="text-small tracking-paragraph text-grey">
 									${msg("doForgotPassword")}
 								</a>
 							</div>
@@ -96,7 +96,7 @@
 
 					<div>
 						<input type="hidden" id="id-hidden-input" name="credentialId" <#if auth.selectedCredential?has_content>value="${auth.selectedCredential}"</#if>>
-						<button tabindex="4" type="submit" name="login" id="kc-login" class="w-full flex justify-center py-2 px-4 border-4 uppercase tracking-button text-button font-semibold text-white bg-trigo-blue border-trigo-blue hover:text-trigo-blue hover:bg-white">
+						<button tabindex="4" type="submit" name="login" id="kc-login" class="w-full flex justify-center py-2 px-4 border-4 uppercase tracking-button text-button font-semibold text-white bg-grey border-grey hover:text-grey hover:bg-white">
 							${msg("doLogIn")}
 						</button>
 					</div>

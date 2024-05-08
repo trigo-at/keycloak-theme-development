@@ -18,7 +18,7 @@ services:
     command: ["start-dev", "--import-realm"]
     restart: unless-stopped
     volumes:
-      - ./themes/tailwind-example/:/opt/keycloak/themes/tailwind-example/
+    - ./themes/tailwind-example/:/opt/keycloak/themes/tailwind-example/
     environment:
       KC_DB: postgres
       KC_DB_USERNAME: keycloak

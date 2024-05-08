@@ -27,7 +27,7 @@ The jar can be extracted with this command:
 
 `./scripts/exportThemes.sh`
 
-## Build the Tailwind Example
+## Use the Tailwind Example
 
 During development run
 
