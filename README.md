@@ -29,12 +29,6 @@ The jar can be extracted with this command:
 
 ## Use the Tailwind Example
 
-During development run
+Log in as admin. Therefore you can find your login data in the .env file.
 
-`npm run build:tailwind-example:dev`
-
-Before using it in production run
-
-`npm run build:tailwind-example`
-
-(this will use all the optimization features of Tailwind)
+In the admin console you can go in your Realm settings to the "Themes" part. There you can choose the tailwind-example for your login screen and confirm it with "save".
